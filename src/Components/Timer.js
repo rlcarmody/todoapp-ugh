@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react'
 const SECONDS = 10;
 
 const Timer = () => {
-    const [time, setTime] = useState(SECONDS * 1000);
+    const [time, setTime] = useState(SECONDS);
     const [timerId, setTimerId] = useState();
 
     const updateTimer = () => {
         console.log('updating... ', time)
         setTime(time => {
-            if(time) return time - 1000;
+            if(time) return time - 1;
             return 0;
         })};
 
@@ -21,7 +21,7 @@ const Timer = () => {
     const stopTimer = () => clearInterval(timerId)
 
     const reset = () => {
-        setTime(SECONDS * 1000);
+        setTime(SECONDS);
     }
 
     useEffect(startTimer, [])
@@ -34,7 +34,7 @@ const Timer = () => {
     },[time, timerId])
     return (
         <>
-            Time Remaining {time / 1000} seconds
+            Time Remaining {time} seconds
             <button onClick={stopTimer}>Stop Timer</button>
             <button onClick={startTimer}>Start Timer</button>
             <button onClick={reset}>Reset</button>
